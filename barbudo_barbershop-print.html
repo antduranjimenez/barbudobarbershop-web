@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barbudo Barbershop — República Dominicana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Barlow+Condensed:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  /* palette */
+  --gold:#C9A24C;
+  --gold-light:#E4C374;
+  --gold-dark:#8E7230;
+  --gold-ink:#1a1407;
+  --ink:#0B0A08;
+  --ink-2:#121110;
+  --ink-3:#1A1815;
+  --line:#262320;
+  --line-2:#33302B;
+  --paper:#EFE9DC;
+  --paper-dim:#A89F8C;
+  --paper-faint:#6E6758;
+
+  /* type */
+  --f-editorial:'Cormorant Garamond',Georgia,serif;
+  --f-display:'Barlow Condensed',sans-serif;
+  --f-body:'Inter',system-ui,sans-serif;
+}
+
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--f-body);
+  font-weight:400;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+::selection{background:var(--gold);color:var(--ink)}
+
+/* ——— subtle film grain overlay ——— */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:99;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.8 0 0 0 0 0.7 0 0 0 0 0.5 0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.06;mix-blend-mode:overlay;
+}
+
+/* ——— typography ——— */
+.eyebrow{
+  font-family:var(--f-display);
+  font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--gold);font-weight:500;
+  display:inline-flex;align-items:center;gap:.8rem;
+}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--gold);opacity:.6}
+.h-display{
+  font-family:var(--f-editorial);
+  font-weight:400;
+  letter-spacing:-0.01em;
+  line-height:1.02;
+  color:var(--paper);
+}
+.h-display em{
+  font-style:italic;
+  color:var(--gold);
+  font-weight:500;
+}
+.section-title{
+  font-size:clamp(2.4rem,5.5vw,4.5rem);
+  margin:1.2rem 0 1.5rem;
+  text-wrap:balance;
+}
+.lede{
+  font-family:var(--f-editorial);
+  font-size:clamp(1.1rem,1.6vw,1.35rem);
+  font-weight:400;
+  line-height:1.55;
+  color:var(--paper-dim);
+  max-width:54ch;
+  font-style:italic;
+}
+
+/* ——— NAV ——— */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:1.4rem 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(180deg,rgba(11,10,8,.85),rgba(11,10,8,0));
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  transition:padding .4s ease,background .4s ease,border-color .4s ease;
+  border-bottom:1px solid transparent;
+}
+.nav.scrolled{
+  padding:.9rem 2.5rem;
+  background:rgba(11,10,8,.92);
+  border-bottom-color:var(--line);
+}
+.nav-logo{display:flex;align-items:center;gap:.8rem}
+.nav-logo img{height:44px;transition:height .4s ease;filter:drop-shadow(0 2px 12px rgba(201,162,76,.2))}
+.nav.scrolled .nav-logo img{height:34px}
+.nav-wordmark{
+  font-family:var(--f-editorial);font-size:1.2rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--paper);font-weight:500;
+  display:none;
+}
+@media(min-width:1100px){.nav-wordmark{display:block}}
+
+.nav-links{display:flex;gap:2.4rem;list-style:none}
+.nav-links a{
+  font-family:var(--f-display);font-weight:500;
+  font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--paper-dim);transition:color .25s;
+  position:relative;padding:.3rem 0;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-2px;left:50%;width:0;height:1px;
+  background:var(--gold);transition:width .3s,left .3s;
+}
+.nav-links a:hover{color:var(--paper)}
+.nav-links a:hover::after{width:100%;left:0}
+
+.nav-cta{
+  font-family:var(--f-display);font-weight:600;
+  font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;
+  padding:.75rem 1.3rem;
+  background:transparent;color:var(--gold);
+  border:1px solid var(--gold);
+  transition:all .3s;
+}
+.nav-cta:hover{background:var(--gold);color:var(--ink)}
+
+.mobile-toggle{display:none;flex-direction:column;gap:5px;padding:8px;cursor:pointer}
+.mobile-toggle span{width:22px;height:1px;background:var(--gold);transition:all .3s}
+
+/* ——— HERO ——— */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;position:relative;overflow:hidden;
+  padding:6rem 2rem 4rem;
+}
+.hero-bg{position:absolute;inset:0;pointer-events:none}
+.hero-bg .vignette{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%,rgba(201,162,76,.10),transparent 60%),
+    radial-gradient(ellipse 100% 100% at 50% 100%,rgba(0,0,0,.6),transparent 50%);
+}
+.hero-bg .stripes{
+  position:absolute;inset:-10%;
+  background-image:repeating-linear-gradient(90deg,transparent 0 120px,rgba(201,162,76,.04) 120px 121px);
+  mask-image:radial-gradient(ellipse at center,black 40%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse at center,black 40%,transparent 75%);
+}
+.hero-bg .corners{position:absolute;inset:2.5rem;pointer-events:none}
+.hero-bg .corners::before,
+.hero-bg .corners::after{
+  content:'';position:absolute;width:40px;height:40px;
+  border:1px solid var(--gold);opacity:.35;
+}
+.hero-bg .corners::before{top:0;left:0;border-right:none;border-bottom:none}
+.hero-bg .corners::after{bottom:0;right:0;border-left:none;border-top:none}
+
+/* subtle rotating halo behind logo */
+.hero-halo{
+  position:absolute;left:50%;top:50%;
+  width:min(820px,95vw);aspect-ratio:1;
+  transform:translate(-50%,-58%);
+  pointer-events:none;
+  background:
+    conic-gradient(from 0deg,transparent 0deg,rgba(201,162,76,.12) 60deg,transparent 120deg,transparent 180deg,rgba(201,162,76,.08) 240deg,transparent 300deg);
+  filter:blur(40px);
+  opacity:.9;
+  animation:halo 30s linear infinite;
+}
+@keyframes halo{to{transform:translate(-50%,-58%) rotate(360deg)}}
+
+/* drifting dust particles */
+.hero-dust{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-dust span{
+  position:absolute;width:3px;height:3px;border-radius:50%;
+  background:var(--gold);opacity:.25;
+  animation:drift linear infinite;
+}
+@keyframes drift{
+  0%{transform:translateY(0) translateX(0);opacity:0}
+  10%{opacity:.4}
+  100%{transform:translateY(-120vh) translateX(40px);opacity:0}
+}
+
+.hero-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+
+.hero-est{
+  font-family:var(--f-display);font-size:.7rem;letter-spacing:.5em;
+  color:var(--gold);text-transform:uppercase;font-weight:500;
+  margin-bottom:2rem;
+  display:flex;align-items:center;gap:1rem;
+  animation:fadeUp 1s ease-out;
+}
+.hero-est::before,.hero-est::after{content:'';width:40px;height:1px;background:var(--gold);opacity:.5}
+
+.hero-logo{
+  width:min(520px,78vw);
+  filter:drop-shadow(0 30px 80px rgba(201,162,76,.18));
+  animation:fadeUp 1s ease-out .15s both,float 8s ease-in-out infinite 1s;
+  will-change:transform;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+
+.hero-tagline{
+  font-family:var(--f-editorial);
+  font-size:clamp(1.3rem,2.6vw,1.8rem);
+  font-style:italic;font-weight:400;
+  color:var(--paper);
+  margin-top:2rem;
+  letter-spacing:.005em;
+  max-width:32ch;
+  animation:fadeUp 1s ease-out .35s both;
+}
+.hero-tagline em{color:var(--gold);font-style:italic}
+
+.hero-subtitle{
+  font-family:var(--f-display);font-size:.78rem;letter-spacing:.55em;
+  text-transform:uppercase;color:var(--paper-faint);
+  margin-top:1.2rem;animation:fadeUp 1s ease-out .45s both;
+}
+
+.hero-ctas{
+  display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;
+  margin-top:3rem;
+  animation:fadeUp 1s ease-out .6s both;
+}
+.btn{
+  font-family:var(--f-display);font-weight:600;
+  font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;
+  padding:1.1rem 2.2rem;
+  transition:transform .25s,background .25s,color .25s,box-shadow .25s,border-color .25s;
+  display:inline-flex;align-items:center;gap:.7rem;
+  border:1px solid transparent;
+}
+.btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 12px 30px -10px rgba(201,162,76,.5)}
+.btn-ghost{background:transparent;color:var(--paper);border-color:var(--line-2)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+
+.hero-scroll{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  font-family:var(--f-display);font-size:.65rem;letter-spacing:.5em;
+  color:var(--paper-faint);text-transform:uppercase;
+  display:flex;flex-direction:column;align-items:center;gap:.8rem;
+  animation:fadeIn 1s ease-out 1.2s both;
+}
+.hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:line 2.5s ease-in-out infinite}
+@keyframes line{0%,100%{transform:scaleY(.4);transform-origin:top}50%{transform:scaleY(1)}}
+
+/* ——— marquee ——— */
+.marquee{
+  overflow:hidden;border-block:1px solid var(--line);
+  background:var(--ink-2);padding:1.4rem 0;
+}
+.marquee-track{
+  display:flex;gap:3rem;white-space:nowrap;
+  animation:marquee 40s linear infinite;
+}
+.marquee-item{
+  font-family:var(--f-editorial);font-style:italic;font-weight:400;
+  font-size:1.6rem;color:var(--paper-dim);display:inline-flex;align-items:center;gap:3rem;
+}
+.marquee-item::after{content:'✦';color:var(--gold);font-style:normal;font-size:.8rem}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ——— sections ——— */
+section{padding:8rem 2rem;position:relative}
+.container{max-width:1240px;margin:0 auto}
+.section-head{max-width:760px;margin-bottom:4.5rem}
+.section-head.center{margin-inline:auto;text-align:center}
+.section-head.center .eyebrow{justify-content:center}
+.section-head.center .eyebrow::before{display:none}
+.section-head.center .eyebrow::after{content:'';width:28px;height:1px;background:var(--gold);opacity:.6;margin-left:.8rem}
+.section-head.center .lede{margin-inline:auto}
+
+/* ——— ABOUT ——— */
+.about{background:var(--ink)}
+.about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:6rem;align-items:center}
+.about-copy .section-title{font-size:clamp(2rem,4.5vw,3.6rem)}
+.about-copy p{color:var(--paper-dim);font-size:1.02rem;line-height:1.8;max-width:52ch;margin-bottom:1.2rem}
+.about-sig{
+  font-family:var(--f-editorial);font-style:italic;font-size:1.4rem;
+  color:var(--gold);margin-top:1.5rem;
+  border-top:1px solid var(--line);padding-top:1.5rem;
+  display:inline-block;
+}
+
+.about-visual{position:relative;aspect-ratio:4/5}
+.about-frame{
+  position:absolute;inset:0;
+  border:1px solid var(--gold);opacity:.4;
+  transform:translate(18px,18px);pointer-events:none;
+}
+.about-img{
+  position:relative;width:100%;height:100%;overflow:hidden;
+  background:var(--ink-3);
+}
+/* striped placeholder image */
+.photo-placeholder{
+  width:100%;height:100%;
+  background:
+    linear-gradient(135deg,rgba(201,162,76,.04) 0%,rgba(201,162,76,.02) 100%),
+    repeating-linear-gradient(45deg,var(--ink-3) 0 8px,var(--ink-2) 8px 16px);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.photo-placeholder::before{
+  content:'';position:absolute;inset:12px;border:1px dashed rgba(201,162,76,.2);
+}
+.photo-placeholder span{
+  font-family:var(--f-display);font-size:.7rem;letter-spacing:.35em;
+  color:var(--gold);opacity:.7;text-transform:uppercase;
+  padding:.6rem 1rem;background:rgba(11,10,8,.8);border:1px solid var(--line);
+}
+
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:3rem;border:1px solid var(--line)}
+.stat{text-align:center;padding:1.5rem 1rem;border-right:1px solid var(--line)}
+.stat:last-child{border-right:none}
+.stat-num{font-family:var(--f-editorial);font-size:clamp(1.8rem,3vw,2.4rem);color:var(--gold);display:block;font-weight:500;line-height:1}
+.stat-num sup{font-size:.6em;vertical-align:super;margin-left:.1em;color:var(--gold-light)}
+.stat-label{font-family:var(--f-display);font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--paper-dim);margin-top:.6rem;display:block}
+
+/* ——— SERVICES ——— */
+.services{background:var(--ink-2);border-block:1px solid var(--line)}
+.services-grid{display:grid;grid-template-columns:1fr;gap:0;border:1px solid var(--line);background:var(--ink)}
+@media(min-width:720px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1080px){.services-grid{grid-template-columns:repeat(3,1fr)}}
+
+.service{
+  padding:2.6rem 2.2rem;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  position:relative;overflow:hidden;
+  transition:background .4s;
+  cursor:pointer;
+  background:var(--ink);
+}
+@media(min-width:1080px){
+  .service:nth-child(3n){border-right:none}
+  .service:nth-last-child(-n+3){border-bottom:none}
+}
+@media(max-width:1079px) and (min-width:720px){
+  .service:nth-child(2n){border-right:none}
+}
+@media(max-width:719px){
+  .service{border-right:none}
+}
+
+.service::before{
+  content:'';position:absolute;top:0;left:0;width:100%;height:2px;
+  background:var(--gold);transform:scaleX(0);transform-origin:left;
+  transition:transform .5s cubic-bezier(.2,.8,.2,1);
+}
+.service:hover::before{transform:scaleX(1)}
+.service:hover{background:linear-gradient(180deg,rgba(201,162,76,.04),transparent 60%)}
+
+.service-num{
+  font-family:var(--f-display);font-size:.7rem;letter-spacing:.3em;
+  color:var(--gold);opacity:.7;
+}
+.service-name{
+  font-family:var(--f-editorial);font-size:1.9rem;font-weight:500;
+  color:var(--paper);margin:1.2rem 0 .8rem;line-height:1.1;
+}
+.service-desc{
+  color:var(--paper-dim);font-size:.95rem;line-height:1.7;
+  min-height:5.2em;
+}
+.service-foot{
+  display:flex;justify-content:space-between;align-items:baseline;
+  margin-top:1.8rem;padding-top:1.3rem;border-top:1px solid var(--line);
+}
+.service-duration{
+  font-family:var(--f-display);font-size:.68rem;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--paper-faint);
+}
+.service-price{
+  font-family:var(--f-editorial);font-size:1.6rem;color:var(--gold);font-weight:500;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1);
+  transform-origin:right;
+}
+.service:hover .service-price{transform:scale(1.08)}
+.service-price small{font-family:var(--f-display);font-size:.55em;letter-spacing:.2em;color:var(--paper-faint);margin-right:.3em;text-transform:uppercase}
+
+/* ——— GALLERY ——— */
+.gallery{background:var(--ink)}
+.gallery-grid{
+  display:grid;gap:1rem;
+  grid-template-columns:repeat(6,1fr);
+  grid-auto-rows:110px;
+}
+.gallery-item{
+  position:relative;overflow:hidden;cursor:pointer;
+  background:var(--ink-3);
+  transition:transform .4s cubic-bezier(.2,.8,.2,1);
+}
+.gallery-item:hover{transform:scale(.985)}
+.gallery-item::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 40%,rgba(11,10,8,.7) 100%);
+  opacity:0;transition:opacity .4s;
+}
+.gallery-item:hover::after{opacity:1}
+.gallery-label{
+  position:absolute;left:1.2rem;bottom:1.2rem;z-index:2;
+  font-family:var(--f-display);font-size:.68rem;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--paper);
+  opacity:0;transform:translateY(10px);transition:all .4s;
+}
+.gallery-item:hover .gallery-label{opacity:1;transform:translateY(0)}
+.gallery-item .photo-placeholder{border:none}
+.gallery-item .photo-placeholder::before{display:none}
+
+.g-1{grid-column:span 3;grid-row:span 3}
+.g-2{grid-column:span 3;grid-row:span 2}
+.g-3{grid-column:span 2;grid-row:span 2}
+.g-4{grid-column:span 2;grid-row:span 2}
+.g-5{grid-column:span 2;grid-row:span 3}
+.g-6{grid-column:span 4;grid-row:span 2}
+@media(max-width:900px){
+  .gallery-grid{grid-template-columns:repeat(4,1fr);grid-auto-rows:100px}
+  .g-1{grid-column:span 4;grid-row:span 3}
+  .g-2,.g-3,.g-4,.g-5,.g-6{grid-column:span 2;grid-row:span 2}
+}
+
+/* lightbox */
+.lightbox{
+  position:fixed;inset:0;z-index:1000;background:rgba(11,10,8,.96);
+  display:none;align-items:center;justify-content:center;
+  animation:fadeIn .3s ease-out;
+  backdrop-filter:blur(8px);
+}
+.lightbox.open{display:flex}
+.lightbox-inner{
+  position:relative;max-width:min(900px,90vw);aspect-ratio:4/3;width:100%;
+  border:1px solid var(--line-2);
+}
+.lightbox-close{
+  position:absolute;top:-3rem;right:0;
+  font-family:var(--f-display);font-size:.75rem;letter-spacing:.3em;
+  color:var(--paper);text-transform:uppercase;
+}
+.lightbox-close:hover{color:var(--gold)}
+.lightbox-caption{
+  position:absolute;left:0;right:0;bottom:-3rem;text-align:center;
+  font-family:var(--f-editorial);font-style:italic;color:var(--paper-dim);
+}
+.lightbox-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  font-family:var(--f-display);font-size:.75rem;letter-spacing:.3em;
+  color:var(--paper);padding:1rem;text-transform:uppercase;
+}
+.lightbox-nav:hover{color:var(--gold)}
+.lightbox-prev{left:-5rem}
+.lightbox-next{right:-5rem}
+@media(max-width:900px){
+  .lightbox-prev{left:.5rem}
+  .lightbox-next{right:.5rem}
+  .lightbox-close{top:-2.2rem}
+}
+
+/* ——— EXPERIENCE / WHY ——— */
+.experience{background:var(--ink)}
+.exp-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:0;border:1px solid var(--line);
+}
+.exp-item{
+  padding:2.8rem 2rem;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  position:relative;
+}
+.exp-item::before{
+  content:attr(data-num);
+  font-family:var(--f-editorial);font-style:italic;
+  font-size:.9rem;color:var(--gold);opacity:.7;
+}
+.exp-item h3{
+  font-family:var(--f-editorial);font-size:1.5rem;font-weight:500;
+  color:var(--paper);margin:1.2rem 0 .8rem;
+}
+.exp-item p{color:var(--paper-dim);font-size:.95rem;line-height:1.75;font-weight:300}
+
+/* ——— TESTIMONIALS ——— */
+.testimonials{background:var(--ink-2);text-align:center}
+.test-carousel{
+  max-width:900px;margin:0 auto;position:relative;min-height:260px;
+}
+.test{
+  position:absolute;inset:0;
+  opacity:0;pointer-events:none;transition:opacity .7s ease;
+  padding:0 2rem;
+}
+.test.active{opacity:1;pointer-events:auto}
+.test-quote{
+  font-family:var(--f-editorial);font-style:italic;font-weight:400;
+  font-size:clamp(1.3rem,2.2vw,1.85rem);
+  line-height:1.5;color:var(--paper);
+  margin-bottom:2rem;text-wrap:balance;
+}
+.test-quote::before,.test-quote::after{color:var(--gold);font-style:normal}
+.test-quote::before{content:'“ '}
+.test-quote::after{content:' ”'}
+.test-author{
+  font-family:var(--f-display);font-size:.75rem;letter-spacing:.35em;
+  text-transform:uppercase;color:var(--gold);
+}
+.test-role{
+  display:block;margin-top:.4rem;
+  font-family:var(--f-body);font-size:.8rem;letter-spacing:.02em;
+  color:var(--paper-faint);text-transform:none;
+}
+.test-dots{display:flex;gap:.6rem;justify-content:center;margin-top:3rem}
+.test-dot{
+  width:28px;height:2px;background:var(--line-2);cursor:pointer;
+  transition:background .3s;
+}
+.test-dot.active{background:var(--gold)}
+
+/* ——— CTA STRIPE ——— */
+.cta-stripe{
+  background:var(--ink);
+  padding:7rem 2rem;position:relative;overflow:hidden;
+  border-block:1px solid var(--line);
+}
+.cta-stripe::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 50% 70% at 50% 50%,rgba(201,162,76,.08),transparent 70%);
+}
+.cta-stripe-inner{position:relative;text-align:center;max-width:720px;margin:0 auto}
+.cta-stripe .h-display{font-size:clamp(2rem,4.5vw,3.4rem)}
+.cta-stripe p{color:var(--paper-dim);margin:1.2rem 0 2.5rem;font-size:1.05rem;font-family:var(--f-editorial);font-style:italic}
+
+/* ——— CONTACT ——— */
+.contact{background:var(--ink-2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contact-block{margin-bottom:2.4rem}
+.contact-block:last-child{margin-bottom:0}
+.contact-block h3{
+  font-family:var(--f-display);font-size:.72rem;letter-spacing:.4em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;font-weight:600;
+}
+.contact-block p,.contact-block a{
+  color:var(--paper);font-size:1rem;line-height:1.7;
+  font-family:var(--f-editorial);font-weight:400;font-size:1.15rem;
+}
+.contact-block a{border-bottom:1px solid var(--line-2);transition:border-color .3s,color .3s}
+.contact-block a:hover{color:var(--gold);border-color:var(--gold)}
+.contact-note{font-family:var(--f-body);font-size:.82rem;color:var(--paper-faint);font-style:italic;margin-top:.3rem}
+
+.contact-map{
+  width:100%;aspect-ratio:4/5;
+  background:var(--ink-3);border:1px solid var(--line);
+  position:relative;overflow:hidden;
+}
+
+.social-links{display:flex;gap:.7rem;margin-top:1.2rem}
+.social-link{
+  width:42px;height:42px;border:1px solid var(--line-2);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .3s;
+}
+.social-link:hover{border-color:var(--gold);background:rgba(201,162,76,.08)}
+.social-link svg{width:16px;height:16px;fill:var(--gold)}
+
+/* ——— FOOTER ——— */
+footer{
+  background:var(--ink);padding:4rem 2rem 2rem;
+  border-top:1px solid var(--line);
+  text-align:center;
+}
+.footer-logo{height:52px;margin:0 auto 1.5rem;opacity:.85}
+.footer-wordmark{
+  font-family:var(--f-editorial);font-style:italic;font-size:1.3rem;
+  color:var(--gold);margin-bottom:.6rem;
+}
+.footer-sub{
+  font-family:var(--f-display);font-size:.7rem;letter-spacing:.35em;
+  text-transform:uppercase;color:var(--paper-faint);margin-bottom:2rem;
+}
+.footer-rule{width:80px;height:1px;background:var(--line-2);margin:0 auto 2rem}
+.footer-meta{
+  font-size:.72rem;color:var(--paper-faint);letter-spacing:.1em;
+}
+
+/* ——— reveals ——— */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ——— sticky book button ——— */
+.sticky-book{
+  position:fixed;right:1.5rem;bottom:1.5rem;z-index:90;
+  padding:1rem 1.5rem;background:var(--gold);color:var(--ink);
+  font-family:var(--f-display);font-size:.72rem;letter-spacing:.3em;
+  text-transform:uppercase;font-weight:600;
+  display:flex;align-items:center;gap:.6rem;
+  box-shadow:0 10px 30px -10px rgba(0,0,0,.6),0 0 0 1px rgba(201,162,76,.4);
+  opacity:0;transform:translateY(30px);pointer-events:none;
+  transition:opacity .4s,transform .4s,background .25s;
+}
+.sticky-book.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.sticky-book:hover{background:var(--gold-light)}
+.sticky-book svg{width:14px;height:14px;fill:currentColor}
+
+/* ——— TWEAKS PANEL ——— */
+.tweaks{
+  position:fixed;right:1.5rem;top:50%;transform:translateY(-50%);z-index:200;
+  width:300px;background:rgba(11,10,8,.96);border:1px solid var(--line-2);
+  padding:1.4rem;display:none;flex-direction:column;gap:1.1rem;
+  backdrop-filter:blur(12px);
+  box-shadow:0 20px 60px -20px rgba(0,0,0,.8);
+  max-height:80vh;overflow-y:auto;
+}
+.tweaks.open{display:flex}
+.tweaks h4{
+  font-family:var(--f-display);font-size:.7rem;letter-spacing:.35em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.tweaks-close{color:var(--paper-dim);cursor:pointer;font-size:1.2rem;line-height:1}
+.tweaks-group{display:flex;flex-direction:column;gap:.4rem}
+.tweaks-label{
+  font-family:var(--f-display);font-size:.62rem;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--paper-dim);
+}
+.tweaks-options{display:flex;flex-wrap:wrap;gap:.35rem}
+.tweaks-btn{
+  font-family:var(--f-body);font-size:.78rem;
+  padding:.5rem .75rem;border:1px solid var(--line-2);color:var(--paper-dim);
+  background:transparent;flex:1;min-width:auto;text-align:center;
+  transition:all .25s;
+}
+.tweaks-btn:hover{border-color:var(--gold);color:var(--paper)}
+.tweaks-btn.active{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.tweaks-swatches{display:flex;gap:.4rem}
+.tweaks-swatch{
+  width:32px;height:32px;border:1px solid var(--line-2);cursor:pointer;
+  transition:all .25s;position:relative;
+}
+.tweaks-swatch.active{border-color:var(--paper);transform:scale(1.1)}
+.tweaks-swatch::after{
+  content:'';position:absolute;inset:-4px;border:1px solid transparent;transition:border-color .25s;
+}
+.tweaks-swatch.active::after{border-color:var(--gold)}
+
+/* ——— PRINT ——— */
+@media print{
+  @page{size:A4;margin:1cm}
+  html,body{background:#0B0A08 !important;color:#EFE9DC !important;-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;color-adjust:exact !important}
+  body::after{display:none !important}
+  .nav,.sticky-book,.tweaks,.hero-scroll,.mobile-toggle,.lightbox,.marquee{display:none !important}
+  .hero{min-height:auto !important;padding:2.5rem 1.5rem !important;page-break-after:always;break-after:page}
+  .hero-halo,.hero-dust,.hero-bg .stripes{display:none !important}
+  .hero-logo{animation:none !important;width:min(320px,65%) !important}
+  section{padding:2.5rem 1.5rem !important;page-break-inside:avoid;break-inside:avoid}
+  .reveal{opacity:1 !important;transform:none !important}
+  .about-grid,.contact-grid{gap:2rem !important}
+  .service,.exp-item,.stat,.gallery-item,.test,.about-img,.contact-map,.cta-stripe-inner{page-break-inside:avoid;break-inside:avoid}
+  .test{position:static !important;opacity:1 !important;pointer-events:auto !important;margin-bottom:1.5rem;border-bottom:1px solid var(--line);padding-bottom:1.5rem}
+  .test:last-child{border-bottom:none}
+  .test-carousel{min-height:auto !important;display:block !important;position:static !important}
+  .test-dots{display:none !important}
+  a{color:inherit !important;text-decoration:none !important}
+  *{animation:none !important;transition:none !important}
+  footer{padding:2rem 1.5rem !important;page-break-inside:avoid}
+  .section-title{font-size:2rem !important}
+  .h-display{font-size:2rem !important}
+}
+
+/* ——— RESPONSIVE ——— */
+@media(max-width:960px){
+  .nav{padding:1rem 1.5rem}
+  .nav.scrolled{padding:.7rem 1.5rem}
+  .nav-links,.nav-cta{display:none}
+  .mobile-toggle{display:flex}
+  .nav.menu-open .nav-links{
+    display:flex;position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;background:rgba(11,10,8,.98);
+    padding:2rem;gap:1.5rem;border-top:1px solid var(--line);
+  }
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:3rem}
+  section{padding:5rem 1.5rem}
+  .hero{padding:6rem 1.2rem 4rem}
+  .hero-ctas{flex-direction:column;width:100%;max-width:320px}
+  .btn{justify-content:center}
+  .section-head{margin-bottom:3rem}
+  .exp-grid{grid-template-columns:1fr}
+  .exp-item{border-right:none !important}
+  .tweaks{right:1rem;width:calc(100vw - 2rem);max-width:300px}
+}
+</style>
+</head>
+<body>
+
+<!-- ——— NAV ——— -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo" aria-label="Barbudo Barbershop — inicio">
+    <img src="assets/BARBUDO_LOGO.png" alt="">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#opiniones">Opiniones</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a class="nav-cta" href="#reservar">Reservar</a>
+  <div class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('menu-open')" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ——— HERO ——— -->
+<header class="hero" id="hero">
+  <div class="hero-bg">
+    <div class="vignette"></div>
+    <div class="stripes"></div>
+    <div class="hero-halo" id="halo"></div>
+    <div class="hero-dust" id="dust"></div>
+    <div class="corners"></div>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-est">Est. 2019 · Santo Domingo</div>
+    <img class="hero-logo" id="heroLogo" src="assets/BARBUDO_LOGO.png" alt="Barbudo Barbershop">
+    <p class="hero-tagline" id="heroTagline">Donde el <em>estilo</em> se encuentra con la <em>tradición</em>.</p>
+    <p class="hero-subtitle">Barbería Premium · República Dominicana</p>
+    <div class="hero-ctas">
+      <a class="btn btn-gold" href="#reservar">
+        Reservar Cita
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="#servicios">Ver Servicios</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</header>
+
+<!-- ——— MARQUEE ——— -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Corte Clásico</span>
+    <span class="marquee-item">Barba &amp; Navaja</span>
+    <span class="marquee-item">Afeitado Ritual</span>
+    <span class="marquee-item">Diseño Artístico</span>
+    <span class="marquee-item">Tratamiento Capilar</span>
+    <span class="marquee-item">Combo Caballero</span>
+    <span class="marquee-item">Corte Clásico</span>
+    <span class="marquee-item">Barba &amp; Navaja</span>
+    <span class="marquee-item">Afeitado Ritual</span>
+    <span class="marquee-item">Diseño Artístico</span>
+    <span class="marquee-item">Tratamiento Capilar</span>
+    <span class="marquee-item">Combo Caballero</span>
+  </div>
+</div>
+
+<!-- ——— ABOUT ——— -->
+<section class="about" id="nosotros">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <span class="eyebrow">Nuestra Casa</span>
+        <h2 class="h-display section-title">Más que una barbería,<br>una <em>experiencia</em>.</h2>
+        <p>En Barbudo no solo cortamos pelo. Creamos un espacio donde cada hombre encuentra su mejor versión — con barberos que dominan su oficio, productos escogidos con cuidado y un ambiente pensado para hacerte sentir en casa.</p>
+        <p>Fundada en el corazón de Santo Domingo, nuestra casa rinde tributo a la tradición del barbero dominicano y la eleva con técnica moderna y atención al detalle.</p>
+        <span class="about-sig">— Hecho con orgullo en RD.</span>
+
+        <div class="about-stats">
+          <div class="stat">
+            <span class="stat-num">7<sup>+</sup></span>
+            <span class="stat-label">Años de Oficio</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">12K<sup>+</sup></span>
+            <span class="stat-label">Clientes</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">4.9<sup>★</sup></span>
+            <span class="stat-label">Valoración</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-visual reveal">
+        <div class="about-frame"></div>
+        <div class="about-img">
+          <img src="assets/photos/owner-client.jpeg" alt="Barbudo Barbershop — equipo y ambiente" style="width:100%;height:100%;object-fit:cover">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ——— SERVICES ——— -->
+<section class="services" id="servicios">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Carta de Servicios</span>
+      <h2 class="h-display section-title">El oficio, en <em>detalle</em>.</h2>
+      <p class="lede">Cada servicio incluye consulta personalizada, productos premium y ese toque Barbudo que nos distingue. Precios en pesos dominicanos.</p>
+    </div>
+
+    <div class="services-grid reveal">
+      <article class="service">
+        <span class="service-num">01</span>
+        <h3 class="service-name">Corte Clásico</h3>
+        <p class="service-desc">Corte a medida con consulta, lavado y styling. Técnica precisa adaptada a la forma de tu rostro y tu estilo.</p>
+        <div class="service-foot">
+          <span class="service-duration">45 min</span>
+          <span class="service-price"><small>RD$</small>500</span>
+        </div>
+      </article>
+      <article class="service">
+        <span class="service-num">02</span>
+        <h3 class="service-name">Barba &amp; Navaja</h3>
+        <p class="service-desc">Diseño, perfilado y acabado con navaja, toalla caliente y aceites esenciales. Ritual completo de barbería tradicional.</p>
+        <div class="service-foot">
+          <span class="service-duration">35 min</span>
+          <span class="service-price"><small>RD$</small>400</span>
+        </div>
+      </article>
+      <article class="service">
+        <span class="service-num">03</span>
+        <h3 class="service-name">Combo Caballero</h3>
+        <p class="service-desc">Corte, barba y cejas. El paquete insignia de la casa — para llegar impecable a cualquier ocasión.</p>
+        <div class="service-foot">
+          <span class="service-duration">75 min</span>
+          <span class="service-price"><small>RD$</small>850</span>
+        </div>
+      </article>
+      <article class="service">
+        <span class="service-num">04</span>
+        <h3 class="service-name">Afeitado Ritual</h3>
+        <p class="service-desc">Afeitado a navaja con toallas calientes, bálsamos y masaje facial. La experiencia clásica en su versión más cuidada.</p>
+        <div class="service-foot">
+          <span class="service-duration">50 min</span>
+          <span class="service-price"><small>RD$</small>650</span>
+        </div>
+      </article>
+      <article class="service">
+        <span class="service-num">05</span>
+        <h3 class="service-name">Tratamiento Capilar</h3>
+        <p class="service-desc">Hidratación profunda, masaje craneal y productos premium para devolverle fuerza y brillo a tu cabello.</p>
+        <div class="service-foot">
+          <span class="service-duration">40 min</span>
+          <span class="service-price"><small>RD$</small>600</span>
+        </div>
+      </article>
+      <article class="service">
+        <span class="service-num">06</span>
+        <h3 class="service-name">Diseño &amp; Color</h3>
+        <p class="service-desc">Líneas, diseños artísticos y aplicación de color — para un look con personalidad que no pasa desapercibido.</p>
+        <div class="service-foot">
+          <span class="service-duration">60 min</span>
+          <span class="service-price"><small>desde RD$</small>800</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ——— GALLERY ——— -->
+<section class="gallery" id="galeria">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">El Lugar</span>
+      <h2 class="h-display section-title">La casa, por <em>dentro</em>.</h2>
+      <p class="lede">Un vistazo al ambiente, al oficio y a los resultados. Espacio reservado para las fotos del local que tu cliente enviará.</p>
+    </div>
+
+    <div class="gallery-grid reveal">
+      <div class="gallery-item g-1" data-caption="Interior del local" data-src="assets/photos/interior-wide.jpeg">
+        <img src="assets/photos/interior-wide.jpeg" alt="Interior" style="width:100%;height:100%;object-fit:cover">
+        <span class="gallery-label">Interior del local</span>
+      </div>
+      <div class="gallery-item g-2" data-caption="Fade con line-up" data-src="assets/photos/fade-lineup.jpeg">
+        <img src="assets/photos/fade-lineup.jpeg" alt="Fade line-up" style="width:100%;height:100%;object-fit:cover">
+        <span class="gallery-label">Fade · line-up</span>
+      </div>
+      <div class="gallery-item g-3" data-caption="Barba y perfilado" data-src="assets/photos/bald-beard.jpeg">
+        <img src="assets/photos/bald-beard.jpeg" alt="Barba" style="width:100%;height:100%;object-fit:cover">
+        <span class="gallery-label">Barba</span>
+      </div>
+      <div class="gallery-item g-4" data-caption="Taper fade" data-src="assets/photos/fade-back-head.jpeg">
+        <img src="assets/photos/fade-back-head.jpeg" alt="Taper" style="width:100%;height:100%;object-fit:cover">
+        <span class="gallery-label">Taper fade</span>
+      </div>
+      <div class="gallery-item g-5" data-caption="Corte infantil" data-src="assets/photos/kid-curly-real.jpeg">
+        <img src="assets/photos/kid-curly-real.jpeg" alt="Corte infantil" style="width:100%;height:100%;object-fit:cover">
+        <span class="gallery-label">Corte infantil</span>
+      </div>
+      <div class="gallery-item g-6" data-caption="Ambiente del local" data-src="assets/photos/presidente.jpeg">
+        <img src="assets/photos/presidente.jpeg" alt="Ambiente" style="width:100%;height:100%;object-fit:cover">
+        <span class="gallery-label">Ambiente</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" id="lbClose">Cerrar ✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">← Prev</button>
+  <button class="lightbox-nav lightbox-next" id="lbNext">Sig →</button>
+  <div class="lightbox-inner" id="lbInner">
+    <div class="photo-placeholder"><span id="lbLabel">—</span></div>
+    <div class="lightbox-caption" id="lbCaption">—</div>
+  </div>
+</div>
+
+<!-- ——— EXPERIENCE ——— -->
+<section class="experience">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">El Método Barbudo</span>
+      <h2 class="h-display section-title">Lo que nos hace <em>distintos</em>.</h2>
+    </div>
+    <div class="exp-grid reveal">
+      <div class="exp-item" data-num="i.">
+        <h3>Oficio verdadero</h3>
+        <p>Barberos con años de experiencia y formación continua en tendencias internacionales. La técnica está en todo.</p>
+      </div>
+      <div class="exp-item" data-num="ii.">
+        <h3>Productos escogidos</h3>
+        <p>Cuidamos lo que toca tu piel y tu pelo. Solo marcas premium, europeas y americanas, probadas por nosotros.</p>
+      </div>
+      <div class="exp-item" data-num="iii.">
+        <h3>Ambiente de casa</h3>
+        <p>Café, trago frío, buena conversación. Un espacio para desconectarte antes de volver al mundo hecho un caballero.</p>
+      </div>
+      <div class="exp-item" data-num="iv.">
+        <h3>Respeto por tu tiempo</h3>
+        <p>Sistema de citas puntual. Llegas, te sientas, disfrutas. Sin esperas innecesarias ni sorpresas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ——— TESTIMONIALS ——— -->
+<section class="testimonials" id="opiniones">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Voces de la Casa</span>
+      <h2 class="h-display section-title">Lo que dicen quienes ya son <em>parte</em>.</h2>
+    </div>
+
+    <div class="test-carousel reveal" id="testCarousel">
+      <div class="test active">
+        <p class="test-quote">Desde la primera visita supe que no iba a buscar otro barbero. Atención, ambiente, corte — todo al nivel que uno espera.</p>
+        <span class="test-author">Carlos Martínez</span>
+        <span class="test-role">Cliente desde 2021</span>
+      </div>
+      <div class="test">
+        <p class="test-quote">Mi barba nunca se había visto tan bien. Los muchachos de Barbudo saben perfectamente lo que hacen. Cien por ciento recomendado.</p>
+        <span class="test-author">Miguel Rodríguez</span>
+        <span class="test-role">Santo Domingo</span>
+      </div>
+      <div class="test">
+        <p class="test-quote">El mejor sitio de la zona para un corte. Salgo de ahí sintiéndome como un millón de pesos. Son otro nivel.</p>
+        <span class="test-author">José Luis Peña</span>
+        <span class="test-role">Piantini</span>
+      </div>
+    </div>
+    <div class="test-dots" id="testDots"></div>
+  </div>
+</section>
+
+<!-- ——— CTA STRIPE ——— -->
+<section class="cta-stripe" id="reservar">
+  <div class="cta-stripe-inner reveal">
+    <span class="eyebrow" style="justify-content:center">Reserva tu lugar</span>
+    <h2 class="h-display" style="margin-top:1rem">¿Listo para la <em>mejor</em> versión tuya?</h2>
+    <p>Agenda por el canal que prefieras. Te esperamos.</p>
+    <div class="hero-ctas" style="justify-content:center">
+      <a class="btn btn-gold" href="https://wa.me/18295551234?text=Hola%20Barbudo,%20quisiera%20reservar%20una%20cita" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" style="width:16px;height:16px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+        WhatsApp
+      </a>
+      <a class="btn btn-ghost" href="tel:+18295551234">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.86 19.86 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.86 19.86 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Llamar
+      </a>
+      <a class="btn btn-ghost" href="https://fresha.com" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke-linecap="round"/></svg>
+        Reservar Online
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ——— CONTACT ——— -->
+<section class="contact" id="contacto">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Visítanos</span>
+      <h2 class="h-display section-title">Ven a <em>conocernos</em>.</h2>
+      <p class="lede">Estamos en el corazón de Santo Domingo. Pasa, tómate un café, hablemos.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="contact-block">
+          <h3>Dirección</h3>
+          <p>Av. Venezuela con calle Activo 20-30<br>Plaza Flow, 2do nivel<br>Santo Domingo, República Dominicana</p>
+        </div>
+
+        <div class="contact-block">
+          <h3>Horario</h3>
+          <p>Lun – Vie · 9:00 a.m. – 8:00 p.m.<br>Sábado · 8:00 a.m. – 9:00 p.m.<br>Domingo · 10:00 a.m. – 4:00 p.m.</p>
+        </div>
+
+        <div class="contact-block">
+          <h3>Contacto</h3>
+          <p>
+            <a href="tel:+18298610282">+1 (829) 861-0282</a><br>
+            <a href="https://wa.me/18298610282">WhatsApp · +1 (829) 861-0282</a><br>
+            <a href="https://instagram.com/barbudobarberrd">@barbudobarberrd</a>
+          </p>
+        </div>
+
+        <div class="contact-block">
+          <h3>Síguenos</h3>
+          <div class="social-links">
+            <a class="social-link" href="https://instagram.com/" target="_blank" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a class="social-link" href="https://facebook.com/" target="_blank" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385h-3.047v-3.47h3.047v-2.642c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.514c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385c5.738-.9 10.126-5.864 10.126-11.854z"/></svg>
+            </a>
+            <a class="social-link" href="https://wa.me/18295551234" target="_blank" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-map reveal">
+        <div class="photo-placeholder" style="border:none">
+          <span>Google Maps embed<br>· 4:5 ·</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ——— FOOTER ——— -->
+<footer>
+  <img class="footer-logo" src="assets/BARBUDO_LOGO.png" alt="Barbudo Barbershop">
+  <div class="footer-wordmark">Barbudo Barbershop</div>
+  <div class="footer-sub">Est. 2019 · Santo Domingo, RD</div>
+  <div class="footer-rule"></div>
+  <p class="footer-meta">© 2026 Barbudo Barbershop · Todos los derechos reservados</p>
+</footer>
+
+<!-- ——— STICKY BOOK ——— -->
+<a class="sticky-book" id="stickyBook" href="#reservar">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+  Reservar
+</a>
+
+<!-- ——— TWEAKS PANEL ——— -->
+<div class="tweaks" id="tweaks" aria-label="Tweaks">
+  <h4>Tweaks <span class="tweaks-close" id="tweaksClose">×</span></h4>
+
+  <div class="tweaks-group">
+    <span class="tweaks-label">Acento</span>
+    <div class="tweaks-swatches" id="tw-accent"></div>
+  </div>
+
+  <div class="tweaks-group">
+    <span class="tweaks-label">Tono de fondo</span>
+    <div class="tweaks-options" id="tw-bg"></div>
+  </div>
+
+  <div class="tweaks-group">
+    <span class="tweaks-label">Tagline del hero</span>
+    <div class="tweaks-options" id="tw-tagline"></div>
+  </div>
+
+  <div class="tweaks-group">
+    <span class="tweaks-label">Logo en hero</span>
+    <div class="tweaks-options" id="tw-logoSize"></div>
+  </div>
+
+  <div class="tweaks-group">
+    <span class="tweaks-label">Movimiento del halo</span>
+    <div class="tweaks-options" id="tw-halo"></div>
+  </div>
+
+  <div class="tweaks-group">
+    <span class="tweaks-label">Tipografía editorial</span>
+    <div class="tweaks-options" id="tw-serif"></div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════
+   NAV
+   ═══════════════════════════════════════════════ */
+const nav = document.getElementById('nav');
+const stickyBook = document.getElementById('stickyBook');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  nav.classList.toggle('scrolled', y > 40);
+  stickyBook.classList.toggle('show', y > window.innerHeight * 0.6);
+});
+
+/* ═══════════════════════════════════════════════
+   REVEAL
+   ═══════════════════════════════════════════════ */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 90);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ═══════════════════════════════════════════════
+   HERO DUST PARTICLES
+   ═══════════════════════════════════════════════ */
+(() => {
+  const dust = document.getElementById('dust');
+  for (let i = 0; i < 22; i++) {
+    const p = document.createElement('span');
+    p.style.left = (Math.random() * 100) + '%';
+    p.style.bottom = '-10px';
+    p.style.animationDuration = (12 + Math.random() * 18) + 's';
+    p.style.animationDelay = (Math.random() * 15) + 's';
+    p.style.transform = `scale(${0.4 + Math.random() * 0.9})`;
+    dust.appendChild(p);
+  }
+})();
+
+/* ═══════════════════════════════════════════════
+   TESTIMONIALS CAROUSEL
+   ═══════════════════════════════════════════════ */
+(() => {
+  const tests = document.querySelectorAll('.test');
+  const dotsContainer = document.getElementById('testDots');
+  let idx = 0;
+  tests.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'test-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => go(i));
+    dotsContainer.appendChild(dot);
+  });
+  const dots = dotsContainer.querySelectorAll('.test-dot');
+  function go(i) {
+    tests[idx].classList.remove('active');
+    dots[idx].classList.remove('active');
+    idx = i;
+    tests[idx].classList.add('active');
+    dots[idx].classList.add('active');
+  }
+  setInterval(() => go((idx + 1) % tests.length), 6500);
+})();
+
+/* ═══════════════════════════════════════════════
+   LIGHTBOX
+   ═══════════════════════════════════════════════ */
+(() => {
+  const items = [...document.querySelectorAll('.gallery-item')];
+  const lb = document.getElementById('lightbox');
+  const lbLabel = document.getElementById('lbLabel');
+  const lbCaption = document.getElementById('lbCaption');
+  let cur = 0;
+  function open(i) {
+    cur = i;
+    const el = items[i];
+    lbLabel.textContent = el.querySelector('.gallery-label').textContent;
+    lbCaption.textContent = el.dataset.caption || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function step(d) { open((cur + d + items.length) % items.length); }
+  items.forEach((el, i) => el.addEventListener('click', () => open(i)));
+  document.getElementById('lbClose').addEventListener('click', close);
+  document.getElementById('lbPrev').addEventListener('click', () => step(-1));
+  document.getElementById('lbNext').addEventListener('click', () => step(1));
+  lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
+  });
+})();
+
+/* ═══════════════════════════════════════════════
+   TWEAKS
+   ═══════════════════════════════════════════════ */
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accent": "brass",
+  "bg": "ink",
+  "tagline": "tradicion",
+  "logoSize": "medium",
+  "halo": "on",
+  "serif": "cormorant"
+}/*EDITMODE-END*/;
+
+const accents = {
+  gold:    { '--gold':'#C9A24C','--gold-light':'#E4C374','--gold-dark':'#8E7230' },
+  brass:   { '--gold':'#B08D57','--gold-light':'#D2A874','--gold-dark':'#7D5F39' },
+  copper:  { '--gold':'#B87340','--gold-light':'#D69668','--gold-dark':'#844F28' },
+  bone:    { '--gold':'#D9C9A8','--gold-light':'#EAE0C8','--gold-dark':'#A8976E' },
+};
+const bgs = {
+  ink:     { '--ink':'#0B0A08','--ink-2':'#121110','--ink-3':'#1A1815' },
+  charcoal:{ '--ink':'#111111','--ink-2':'#161616','--ink-3':'#1E1E1E' },
+  mocha:   { '--ink':'#0F0C08','--ink-2':'#171310','--ink-3':'#1F1A14' },
+};
+const taglines = {
+  tradicion: 'Donde el <em>estilo</em> se encuentra con la <em>tradición</em>.',
+  caballero: 'El arte de ser <em>caballero</em>, desde 2019.',
+  ritual:    'Un <em>ritual</em> para hombres que cuidan los detalles.',
+  casa:      'La casa del <em>barbero</em> dominicano.',
+};
+const logoSizes = {
+  hero:    'min(520px,78vw)',
+  medium:  'min(360px,60vw)',
+  small:   'min(220px,40vw)',
+};
+const serifs = {
+  cormorant: "'Cormorant Garamond',Georgia,serif",
+  playfair:  "'Playfair Display',Georgia,serif",
+  dmserif:   "'DM Serif Display',Georgia,serif",
+};
+
+function ensureFont(family) {
+  const id = 'font-' + family.replace(/\W/g,'');
+  if (document.getElementById(id)) return;
+  const link = document.createElement('link');
+  link.id = id; link.rel = 'stylesheet';
+  link.href = `https://fonts.googleapis.com/css2?family=${family.replace(/ /g,'+')}:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap`;
+  document.head.appendChild(link);
+}
+
+const state = { ...TWEAK_DEFAULTS };
+
+function applyTweaks() {
+  // accent
+  const a = accents[state.accent] || accents.gold;
+  Object.entries(a).forEach(([k,v]) => document.documentElement.style.setProperty(k,v));
+  // bg
+  const b = bgs[state.bg] || bgs.ink;
+  Object.entries(b).forEach(([k,v]) => document.documentElement.style.setProperty(k,v));
+  // tagline
+  document.getElementById('heroTagline').innerHTML = taglines[state.tagline] || taglines.tradicion;
+  // logo size
+  document.getElementById('heroLogo').style.width = logoSizes[state.logoSize] || logoSizes.hero;
+  // halo
+  const halo = document.getElementById('halo');
+  halo.style.animationPlayState = state.halo === 'on' ? 'running' : 'paused';
+  halo.style.opacity = state.halo === 'off' ? '0.3' : '';
+  // serif
+  if (state.serif === 'playfair') ensureFont('Playfair Display');
+  if (state.serif === 'dmserif')  ensureFont('DM Serif Display');
+  document.documentElement.style.setProperty('--f-editorial', serifs[state.serif] || serifs.cormorant);
+}
+
+function buildTweakUI() {
+  const mk = (containerId, options, key, labels) => {
+    const c = document.getElementById(containerId);
+    c.innerHTML = '';
+    options.forEach(opt => {
+      const b = document.createElement('button');
+      b.className = 'tweaks-btn' + (state[key] === opt ? ' active' : '');
+      b.textContent = (labels && labels[opt]) || opt;
+      b.addEventListener('click', () => {
+        state[key] = opt;
+        applyTweaks();
+        buildTweakUI();
+        persist({ [key]: opt });
+      });
+      c.appendChild(b);
+    });
+  };
+  // swatches for accent
+  const sc = document.getElementById('tw-accent');
+  sc.innerHTML = '';
+  Object.entries(accents).forEach(([k,v]) => {
+    const s = document.createElement('button');
+    s.className = 'tweaks-swatch' + (state.accent === k ? ' active' : '');
+    s.style.background = v['--gold'];
+    s.title = k;
+    s.addEventListener('click', () => {
+      state.accent = k; applyTweaks(); buildTweakUI(); persist({ accent: k });
+    });
+    sc.appendChild(s);
+  });
+
+  mk('tw-bg',       Object.keys(bgs),       'bg',       { ink:'Negro', charcoal:'Carbón', mocha:'Moca' });
+  mk('tw-tagline',  Object.keys(taglines),  'tagline',  { tradicion:'Tradición', caballero:'Caballero', ritual:'Ritual', casa:'Casa' });
+  mk('tw-logoSize', Object.keys(logoSizes), 'logoSize', { hero:'Grande', medium:'Medio', small:'Pequeño' });
+  mk('tw-halo',     ['on','off'],           'halo',     { on:'Sí', off:'No' });
+  mk('tw-serif',    Object.keys(serifs),    'serif',    { cormorant:'Cormorant', playfair:'Playfair', dmserif:'DM Serif' });
+}
+
+function persist(edits) {
+  try { window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*'); } catch(e){}
+}
+
+/* listen FIRST, then announce */
+window.addEventListener('message', (e) => {
+  const d = e.data || {};
+  if (d.type === '__activate_edit_mode')   document.getElementById('tweaks').classList.add('open');
+  if (d.type === '__deactivate_edit_mode') document.getElementById('tweaks').classList.remove('open');
+});
+try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch(e){}
+
+document.getElementById('tweaksClose').addEventListener('click', () => {
+  document.getElementById('tweaks').classList.remove('open');
+});
+
+applyTweaks();
+buildTweakUI();
+
+/* ═══════════════════════════════════════════════
+   AUTO-PRINT
+   ═══════════════════════════════════════════════ */
+(async () => {
+  try { if (document.fonts && document.fonts.ready) await document.fonts.ready; } catch(e){}
+  await new Promise(r => window.addEventListener('load', r, { once: true }));
+  setTimeout(() => { window.print(); }, 800);
+})();
+</script>
+
+</body>
+</html>
